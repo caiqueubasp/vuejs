@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/vue.js"></script>
+    <title>VueJs Events</title>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="increase">Click Me</button>
+      <p>{{ counter }}</p>
+      <hr />
+      <p v-on:mousemove="updateCordinates">
+        {{ x }} / {{ y }} -
+        <span v-on:mousemove.stop="">DEAD SPOT</span>
+      </p>
+      <hr />
+      <button v-on:click="increaseByFive(5, $event)">Increase by 5</button>
+      <p>{{ five }}</p>
+      <hr />
+      <input type="text" v-on:keyup.enter.space="alertMe" />
+    </div>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          counter: 0,
+          x: 0,
+          y: 0,
+          five: 5,
+        },
+        methods: {
+          increase: function () {
+            this.counter++;
+          },
+          updateCordinates: function (event) {
+            this.x = event.clientX;
+            this.y = event.clientY;
+          },
+          increaseByFive: function (step, event) {
+            this.five += step;
+          },
+          alertMe: function () {
+            alert("Alert");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
