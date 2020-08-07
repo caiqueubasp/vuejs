@@ -1,0 +1,33 @@
+body {
+  height: 100vh;
+  background-color: #2d2d2d;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 300px;
+}
+
+.demo {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  margin: 10px;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+hr {
+  color: #fff;
+  font-size: 2rem;
+}

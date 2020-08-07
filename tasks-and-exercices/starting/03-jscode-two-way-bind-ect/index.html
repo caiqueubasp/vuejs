@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/vue.js"></script>
+    <title>Vue JS Bind Etc</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="value" />
+      <p>{{ value }}</p>
+      <hr />
+      <h1>Counter</h1>
+      <button v-on:click="counter++">Increase</button>
+      <button v-on:click="counter--">Decrease</button>
+      <button v-on:click="secondCounter++">Increase Second</button>
+      <p>{{ counter }}</p>
+      <p>Result: {{ result() }}</p>
+      <hr />
+      <h1>Change Link</h1>
+      <button @click="changeLink">Click to change Link</button>
+      <a :href="link" target="_blank">Link</a>
+    </div>
+
+    <!-- JS -->
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          value: "Caique",
+          counter: 0,
+          secondCounter: 0,
+          link: "https://google.com",
+        },
+        computed: {
+          output: function () {
+            return this.counter > 5 ? "Grater 5" : "Smaller 5";
+          },
+        },
+        watch: {
+          counter: function (value) {
+            var vm = this;
+            setTimeout(function () {
+              vm.counter = 0;
+            }, 5000);
+          },
+        },
+        methods: {
+          result: function () {
+            return this.counter > 5 ? "Grater 5" : "Smaller 5";
+          },
+          changeLink: function () {
+            return (this.link = "https://apple.com");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
