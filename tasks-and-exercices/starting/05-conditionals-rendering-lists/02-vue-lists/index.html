@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conditionals and Rendering lists</title>
+  </head>
+  <body>
+    <style>
+      body {
+        height: 100vh;
+        background-color: #2d2d2d;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      #app {
+        width: 80vw;
+        height: 80vh;
+        background-color: #4d4d4d;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        overflow: auto;
+        padding: 20px;
+        margin: 20px;
+      }
+
+      hr {
+        color: #fff;
+        width: 500px;
+      }
+    </style>
+
+    <div id="app">
+      <ul>
+        <li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ ingredient }} ({{ i }})</li>
+      </ul>
+      <button @click="ingredients.push('new Item')">Add Me!</button>
+      <hr />
+      <ul>
+        <template v-for="(ingredient, index) in ingredients">
+          <h1>{{ ingredient }}</h1>
+          <p>{{ index }}</p>
+        </template>
+      </ul>
+      <hr />
+      <li v-for="person in persons">
+        <div v-for="(v, k, i) in person ">{{ k }}: {{ v }} ({{ i }})</div>
+      </li>
+      <hr />
+      <h3>Lopping Numbers below</h3>
+      <span v-for="n in 25">{{ n }}</span>
+    </div>
+
+    <script src="/vue.js"></script>
+
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          ingredients: ["meat", "fruit", "cookies"],
+          persons: [
+            { name: "Max", age: 27, color: "red" },
+            { name: "Caique", age: 20, color: "blue" },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>
