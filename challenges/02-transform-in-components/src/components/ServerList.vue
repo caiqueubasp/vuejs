@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <ul class="list-group">
-        <li class="list-group-item" v-for="index in 5" v-bind:key="index">Server #{{ index }}</li>
+        <li class="list-group-item" v-for="index in 5" v-bind:key="index">
+          Server #{{ index }}
+        </li>
       </ul>
     </div>
     <div class="col-xs-12 col-sm-6">
@@ -14,14 +16,20 @@
 
 <script>
 export default {
-  data: function () {
+  data: function() {
     return {
       index: ["Server", "Bosta"],
+      servers: [
+        { id: 1, status: "Normal" },
+        { id: 1, status: "Critical" },
+        { id: 1, status: "Unknown" },
+        { id: 1, status: "Normal" },
+        { id: 1, status: "Unknown" }
+      ]
     };
-  },
+  }
 };
 </script>
-
 
 <style scoped>
 div {

@@ -1,0 +1,14 @@
+
+
+# About components Communication
+Briefly explain your approach and possible challenges you overcame.
+
+Have a look at the solution video to understand my way of approaching and solving this exercise. You can find the finished code attached.
+
+It's important to keep the different tools and the flow-direction of those tools in mind.
+
+You got props  to pass data from a PARENT => CHILD.
+
+You got events ($emit ) to pass data from CHILD => PARENT.
+
+And if you got two sibling components which you need to communicate with each other: You can use an event bus to pass data from SIBLING => SIBLING.
