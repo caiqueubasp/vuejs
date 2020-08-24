@@ -9,31 +9,14 @@
           <!-- Mail -->
           <!-- Password -->
           <!-- Store Data? Yes/No -->
-          <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input
-              id="first-name"
-              name="first-name"
-              type="text"
-              placeholder="input your first name"
-              v-model="userData.firstName"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="second-name">Second Name</label>
-            <input
-              id="second-name"
-              name="second-name"
-              type="text"
-              placeholder="input your second name"
-              v-model="userData.secondName"
-            />
+          <div class="row">
+            <app-full-name v-model="userData.fullName"></app-full-name>
           </div>
 
           <div class="form-group">
             <label for="full-name">Is this your Full Name?</label>
             <input
+              class="form-control"
               id="full-name"
               name="full-name"
               type="text"
@@ -56,6 +39,7 @@
           <div class="form-group">
             <label for="password">Your password</label>
             <input
+              class="form-control"
               id="password"
               name="password"
               type="password"
@@ -65,15 +49,13 @@
           </div>
 
           <div class="form-group">
-            <label for="radio">Want store your datas?</label>
-            <select name="radio" id="radio" v-model="selectDataOption">
-              <option
-                value
-                v-for="option in options"
-                :key="option"
-                :selected="option == 'no'"
-              >{{ option }}</option>
-            </select>
+            <label for="radio">
+              <input type="radio" value="Yes" v-model="storeData" /> Yes
+            </label>
+
+            <label for="radio">
+              <input type="radio" value="No" v-model="storeData" /> No
+            </label>
           </div>
 
           <div class="row">
@@ -102,10 +84,10 @@
             <h4>Your Data</h4>
           </div>
           <div class="panel-body">
-            <p>Full Name:{{ userData.firstName }} {{ userData.secondName }}</p>
+            <p>Full Name:{{ userData.fullName }}</p>
             <p>Mail: {{ userData.mail }}</p>
             <p>Password: {{ userData.password }}</p>
-            <p>Store in Database?: {{ selectDataOption }}</p>
+            <p>Store in Database?: {{ storeData }}</p>
           </div>
         </div>
       </div>
@@ -114,17 +96,18 @@
 </template>
 
 <script>
+import FullName from "./components/FullName.vue";
+
 export default {
   data() {
     return {
       userData: {
-        firstName: "",
-        secondName: "",
-        fullName: "",
+        fullName: "Your Full Name",
         mail: "",
         password: "",
       },
-      selectDataOption: "no",
+      storeData: "No",
+
       options: ["yes", "no"],
       isSubmited: false,
       formIsSubmited: false,
@@ -140,6 +123,9 @@ export default {
     formSubmited() {
       this.formIsSubmited = true;
     },
+  },
+  components: {
+    appFullName: FullName,
   },
 };
 </script>
