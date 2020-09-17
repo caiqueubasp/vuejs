@@ -1,26 +1,20 @@
 <template>
-  <div>
-    <button class="btn btn-primary" @click="increment(100)">Increment</button>
-    <button class="btn btn-primary" @click="decrement(50)">Decrement</button>
-  </div>
+    <div>
+        <button class="btn btn-primary" @click="asyncIncrement({by: 50, duration: 500})">Increment</button>
+        <button class="btn btn-primary" @click="asyncDecrement({by: 50, duration: 500})">Decrement</button>
+    </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+    import {mapActions} from 'vuex';
+    import * as types from '../store/types';
 
-export default {
-  methods: {
-    mapActions: {
-      increment() {
-        this.$store.commit("increment");
-      },
-      decrement() {
-        this.$store.commit("decrement");
-      },
-    },
-    increment() {
-      this.$store.dispatch("increment", by);
-    },
-  },
-};
+    export default {
+        methods: {
+            ...mapActions({
+                asyncIncrement: types.COUNTER_INCREMENT_ASYNC,
+                asyncDecrement: types.COUNTER_DECREMENT_ASYNC
+            })
+        }
+    }
 </script>
